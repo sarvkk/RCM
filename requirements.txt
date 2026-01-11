@@ -1,0 +1,43 @@
+# Mechanistic Interpretability - Refusal Circuit Mapping
+# ======================================================
+
+# Core ML frameworks
+torch>=2.0.0
+transformers>=4.35.0
+accelerate>=0.25.0
+
+# Mechanistic Interpretability
+transformer-lens>=1.14.0
+circuitsvis>=1.43.2
+
+# Data & Analysis
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.11.0
+scikit-learn>=1.3.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.18.0
+
+# Experiment tracking
+wandb>=0.16.0
+tqdm>=4.66.0
+
+# Jupyter support
+jupyter>=1.0.0
+ipywidgets>=8.1.0
+nbformat>=5.9.0  # For notebook generation
+
+# Configuration
+pyyaml>=6.0.0  # For YAML config files
+
+# Utilities
+einops>=0.7.0
+jaxtyping>=0.2.25
+typeguard>=4.1.0
+fancy-einsum>=0.0.3
+
+# Report generation (optional)
+# latex is system-level, not pip installable

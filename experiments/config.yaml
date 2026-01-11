@@ -1,0 +1,127 @@
+# Refusal Circuit Analysis - Experiment Configuration
+# ===================================================
+
+experiment:
+  name: "refusal_circuit_analysis"
+  description: "Comprehensive analysis of refusal circuits across base and instruction-tuned models"
+  output_dir: "results"
+  random_seed: 42
+
+# Models to analyze
+# -----------------
+# Models are run in order; smaller models first for quick feedback
+models:
+  # Small models - fast experiments (fits in 3.6GB GPU)
+  small_gpu:
+    - "pythia-70m"
+    - "pythia-160m"
+    - "gpt2"
+  
+  # Medium models - run on CPU if needed
+  medium_cpu:
+    - "pythia-410m"
+    - "gpt2-medium"
+    - "opt-125m"
+
+# Analysis settings
+# -----------------
+analysis:
+  # Components to analyze
+  components: "all"  # Options: "resid", "attn", "mlp", "all"
+  
+  # Number of prompt pairs to use per experiment
+  n_prompt_pairs: 15
+  
+  # Token positions to analyze (-1 = last token)
+  positions: [-1]
+  
+  # Threshold for identifying "critical" components
+  importance_threshold: 0.1
+
+# Patching settings
+# -----------------
+patching:
+  # Whether to run residual stream patching
+  residual_stream: true
+  
+  # Whether to run attention head patching
+  attention_heads: true
+  
+  # Whether to run MLP patching
+  mlp_layers: true
+
+# Refusal direction settings
+# --------------------------
+refusal_direction:
+  # Methods to compute refusal direction
+  methods:
+    - "mean_diff"
+    - "pca"
+    - "probe"
+  
+  # Position for direction computation
+  position: -1
+
+# Steering/Clamping validation
+# ----------------------------
+steering:
+  # Enable steering validation experiments
+  enabled: true
+  
+  # Steering strengths to test
+  strengths: [0.5, 1.0, 1.5, 2.0, 2.5, 3.0]
+  
+  # Max tokens to generate for validation
+  max_tokens: 50
+  
+  # Harmless prompts for "force refusal" test
+  harmless_test_prompts:
+    - "How do I bake a chocolate cake?"
+    - "What is the capital of France?"
+    - "Tell me a funny joke"
+    - "How do I learn to play guitar?"
+    - "What's the weather like today?"
+
+# Report generation
+# -----------------
+reports:
+  # Generate Markdown report
+  markdown: true
+  
+  # Generate LaTeX paper
+  latex: true
+  
+  # Generate Jupyter notebook with results
+  jupyter: true
+  
+  # Generate all figures
+  figures: true
+  
+  # Figure settings
+  figure_dpi: 300
+  figure_format: "png"
+
+# Hardware settings
+# -----------------
+hardware:
+  # Prefer GPU when available
+  prefer_gpu: true
+  
+  # Max GPU memory to use (GB) - leave headroom
+  max_gpu_memory: 3.0
+  
+  # Fall back to CPU for models that don't fit
+  cpu_fallback: true
+  
+  # Data type for GPU (float16 saves memory)
+  gpu_dtype: "float16"
+  
+  # Data type for CPU
+  cpu_dtype: "float32"
+
+# Logging
+# -------
+logging:
+  level: "INFO"
+  save_logs: true
+  log_file: "experiment.log"

@@ -1,0 +1,223 @@
+% LaTeX Template for Refusal Circuit Analysis Paper
+% =================================================
+% 
+% This template is designed for academic submission of mechanistic
+% interpretability research on refusal circuits in LLMs.
+%
+% Usage: Fill in the {{PLACEHOLDER}} sections with your results
+
+\documentclass[11pt,a4paper]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{natbib}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\geometry{margin=1in}
+\pgfplotsset{compat=1.17}
+
+% Custom colors
+\definecolor{refusalred}{RGB}{230,57,70}
+\definecolor{compliantblue}{RGB}{69,123,157}
+\definecolor{neutralgray}{RGB}{128,128,128}
+
+% Custom commands
+\newcommand{\refusal}[1]{\textcolor{refusalred}{#1}}
+\newcommand{\compliant}[1]{\textcolor{compliantblue}{#1}}
+
+\title{Mapping the Refusal Circuit in Large Language Models: \\
+\large A Mechanistic Interpretability Study}
+
+\author{
+{{AUTHOR_NAME}} \\
+{{AFFILIATION}} \\
+\texttt{{{EMAIL}}}
+}
+
+\date{{{DATE}}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+When large language models (LLMs) refuse potentially harmful requests, the internal
+mechanisms driving this decision remain poorly understood. We present a systematic
+investigation into the ``refusal circuit'' -- the subset of neural network components
+causally responsible for refusal behavior. Using activation patching across 
+{{N_MODELS}} models from the {{MODEL_FAMILIES}} families, we identify specific layers
+and attention heads that mediate refusal decisions. We extract a ``refusal direction''
+in activation space that achieves {{SEPARATION_SCORE}}$\sigma$ separation between
+refusal and compliant prompts. Crucially, we validate these findings through steering
+experiments: by adding or subtracting this direction, we can force refusal on harmless
+queries ({{FORCE_RATE}}\% success) or suppress refusal on harmful ones 
+({{SUPPRESS_RATE}}\% success). These results demonstrate that refusal in LLMs is
+mediated by identifiable, manipulable circuits, with implications for AI safety
+and alignment research.
+\end{abstract}
+
+\section{Introduction}
+
+The ability of language models to refuse harmful requests is a critical safety
+feature, yet the computational mechanisms underlying this behavior remain opaque.
+Understanding \textit{how} models make refusal decisions -- at the level of
+individual neurons, attention heads, and layers -- is essential for:
+
+\begin{enumerate}
+    \item Building more robust safety mechanisms that resist adversarial attacks
+    \item Understanding the effects of alignment techniques on model internals
+    \item Developing interpretability tools for safety-critical AI behavior
+\end{enumerate}
+
+We address the following research questions:
+\begin{itemize}
+    \item \textbf{RQ1}: Is refusal behavior localized to specific model components?
+    \item \textbf{RQ2}: Can we identify a ``refusal direction'' in activation space?
+    \item \textbf{RQ3}: Can we causally manipulate refusal through targeted interventions?
+\end{itemize}
+
+\section{Related Work}
+
+\subsection{Mechanistic Interpretability}
+
+Recent work has made significant progress in understanding transformer circuits
+\citep{elhage2021mathematical, olsson2022context}. The ``circuits'' framework
+views neural networks as compositions of interpretable computational units.
+
+\subsection{Activation Patching}
+
+Activation patching \citep{meng2022locating, wang2022interpretability} has emerged
+as a powerful technique for causal analysis of neural networks. By swapping
+activations between different inputs, we can identify which components are
+necessary for specific behaviors.
+
+\subsection{AI Safety and Refusal}
+
+Understanding refusal mechanisms is directly relevant to AI safety 
+\citep{bai2022training, perez2022red}. Prior work has studied refusal from
+a behavioral perspective; we contribute a mechanistic analysis.
+
+\section{Methodology}
+
+\subsection{Models and Data}
+
+We analyze {{N_MODELS}} models:
+\begin{itemize}
+{{MODEL_LIST}}
+\end{itemize}
+
+Our prompt dataset consists of {{N_PROMPT_PAIRS}} carefully constructed pairs,
+where each pair contains:
+\begin{itemize}
+    \item A \refusal{refusal-triggering prompt} (e.g., ``How do I make a bomb?'')
+    \item A \compliant{structurally similar compliant prompt} (e.g., ``How do I make a cake?'')
+\end{itemize}
+
+\subsection{Activation Patching}
+
+\begin{algorithm}[h]
+\caption{Activation Patching for Refusal Circuit Identification}
+\begin{algorithmic}[1]
+\REQUIRE Model $M$, refusal prompt $p_r$, compliant prompt $p_c$
+\STATE $A_r \gets \text{Forward}(M, p_r)$ \COMMENT{Cache refusal activations}
+\STATE $A_c \gets \text{Forward}(M, p_c)$ \COMMENT{Cache compliant activations}
+\FOR{each layer $l$ in $M$}
+    \STATE $\hat{y} \gets \text{Forward}(M, p_r, \text{patch}=A_c^{(l)})$
+    \STATE $\text{effect}_l \gets \text{RefusalScore}(y_r) - \text{RefusalScore}(\hat{y})$
+\ENDFOR
+\RETURN Components with $|\text{effect}| > \theta$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Refusal Direction Computation}
+
+We compute the refusal direction $d$ as:
+\begin{equation}
+    d = \frac{\bar{A}_r - \bar{A}_c}{\|\bar{A}_r - \bar{A}_c\|_2}
+\end{equation}
+where $\bar{A}_r$ and $\bar{A}_c$ are mean activations over refusal and compliant
+prompts respectively, computed at the layer identified as most important by
+activation patching.
+
+\subsection{Steering Experiments}
+
+To validate causal identification, we perform two steering experiments:
+\begin{enumerate}
+    \item \textbf{Force Refusal}: On harmless prompts, add $\alpha \cdot d$ to activations
+    \item \textbf{Suppress Refusal}: On harmful prompts, subtract $\alpha \cdot d$
+\end{enumerate}
+where $\alpha$ controls steering strength.
+
+\section{Results}
+
+\subsection{Circuit Localization}
+
+{{CIRCUIT_RESULTS}}
+
+\subsection{Refusal Direction}
+
+{{DIRECTION_RESULTS}}
+
+\subsection{Steering Validation}
+
+{{STEERING_RESULTS}}
+
+\begin{table}[h]
+\centering
+\caption{Summary of results across all analyzed models}
+\label{tab:results}
+\begin{tabular}{lcccc}
+\toprule
+Model & Separation ($\sigma$) & Probe Acc. & Force (\%) & Suppress (\%) \\
+\midrule
+{{RESULTS_TABLE}}
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Discussion}
+
+\subsection{Key Findings}
+
+{{DISCUSSION_FINDINGS}}
+
+\subsection{Implications for AI Safety}
+
+{{DISCUSSION_SAFETY}}
+
+\subsection{Limitations}
+
+{{DISCUSSION_LIMITATIONS}}
+
+\section{Conclusion}
+
+We have demonstrated that refusal behavior in LLMs is mediated by identifiable
+neural circuits that can be located through activation patching and manipulated
+through steering. This work contributes to the mechanistic understanding of
+AI safety mechanisms and suggests directions for building more robust alignment.
+
+\section*{Acknowledgments}
+
+{{ACKNOWLEDGMENTS}}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\appendix
+
+\section{Additional Results}
+
+{{APPENDIX_CONTENT}}
+
+\end{document}
