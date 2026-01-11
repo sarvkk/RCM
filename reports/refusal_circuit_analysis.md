@@ -29,15 +29,50 @@ This report presents findings from activation patching experiments designed to l
 
 The separation score measures how distinguishable refusal-triggering activations are from compliant activations in the model's representation space:
 
-![Separation Scores](figures/separation_scores.svg)
+```
+Separation Score (σ)
+      │
+  2.0 ┤
+      │
+  1.5 ┤                    ┌───────┐
+      │                    │▓▓▓▓▓▓▓│  ┌───────┐
+      │                    │▓▓▓▓▓▓▓│  │▓▓▓▓▓▓▓│
+  1.0 ┤─ ─ ─ ─ ─ ─ ─ ─ ─ ─│▓▓▓▓▓▓▓│─ │▓▓▓▓▓▓▓│─ ─ ─ ─ ─ Target
+      │                    │▓▓▓▓▓▓▓│  │▓▓▓▓▓▓▓│
+      │  ┌───────┐ ┌───────┤▓▓▓▓▓▓▓│  │▓▓▓▓▓▓▓│ ┌───────┐
+  0.5 ┤  │░░░░░░░│ │░░░░░░░│▓▓▓▓▓▓▓│  │▓▓▓▓▓▓▓│ │░░░░░░░│
+      │  │░░░░░░░│ │░░░░░░░│▓▓▓▓▓▓▓│  │▓▓▓▓▓▓▓│ │░░░░░░░│
+      │  │░░░░░░░│ │░░░░░░░│▓▓▓▓▓▓▓│  │▓▓▓▓▓▓▓│ │░░░░░░░│
+  0.0 ┼──┴───────┴─┴───────┴───────┴──┴───────┴─┴───────┴──
+         pythia    pythia   pythia      gpt2     gpt2
+          -70m     -160m     -410m              -medium
+          0.46σ    0.55σ     1.64σ     1.49σ     0.55σ
 
-*Higher σ indicates clearer separation. Models exceeding 1.0σ show strong linear separability.*
+      ░░░ σ < 1.0 (Weak)    ▓▓▓ σ > 1.0 (Good)
+```
 
 ### Layer-wise Activation Patching Impact
 
-Heatmap showing which layers, when patched, most affect refusal behavior (red = high impact, green = low impact):
+Component scores showing which layers are most critical for refusal (more negative = higher impact):
 
-![Layer Importance Heatmap](figures/layer_importance_heatmap.svg)
+```
+Layer Impact Scores (pythia-410m)
+────────────────────────────────────────────────────────────────
+L0  resid  │████████████████████████████████████████│ -0.65 ★
+L0  mlp    │██████████████████████████████████████  │ -0.63
+L1  resid  │████████████████████████████████████    │ -0.61
+L12 resid  │██████████████████████████████████      │ -0.58
+L8  resid  │█████████████████████████████████       │ -0.58
+L11 resid  │████████████████████████████████        │ -0.57
+L2  resid  │████████████████████████████████        │ -0.56
+L9  resid  │███████████████████████████████         │ -0.56
+L10 resid  │███████████████████████████████         │ -0.55
+L7  resid  │██████████████████████████████          │ -0.55
+────────────────────────────────────────────────────────────────
+           Low Impact ◀─────────────────▶ High Impact
+
+★ Most critical component: Layer 0 residual stream
+```
 
 *Early layers (0-3) consistently show highest impact across all model architectures.*
 
