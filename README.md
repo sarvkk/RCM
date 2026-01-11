@@ -17,8 +17,8 @@ For the motivation behind this research, see [MOTIVATION.md](MOTIVATION.md).
 
 ```bash
 # Install
-git clone https://github.com/saycured/saycuredAI.git
-cd saycuredAI
+git clone https://github.com/sarvkk/RCM.git
+cd RCM
 python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 
@@ -35,7 +35,7 @@ jupyter notebook notebooks/02_comprehensive_analysis.ipynb
 ## Project Structure
 
 ```
-saycuredAI/
+RCM/
 ├── src/
 │   ├── models/          # Model loading
 │   ├── data/            # Prompt datasets
