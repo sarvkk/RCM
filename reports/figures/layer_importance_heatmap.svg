@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="heatGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="#0d1117"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" fill="#e6edf3" font-family="system-ui, sans-serif" font-size="18" font-weight="600">Layer-wise Activation Patching Impact on Refusal Behavior</text>
+  <text x="400" y="55" text-anchor="middle" fill="#7d8590" font-family="system-ui, sans-serif" font-size="12">Component scores across models (lower = more critical for refusal)</text>
+  
+  <!-- Y-axis labels (Models) -->
+  <text x="95" y="105" text-anchor="end" fill="#e6edf3" font-family="monospace" font-size="11">pythia-70m</text>
+  <text x="95" y="145" text-anchor="end" fill="#e6edf3" font-family="monospace" font-size="11">pythia-160m</text>
+  <text x="95" y="185" text-anchor="end" fill="#e6edf3" font-family="monospace" font-size="11">pythia-410m</text>
+  <text x="95" y="225" text-anchor="end" fill="#e6edf3" font-family="monospace" font-size="11">gpt2</text>
+  <text x="95" y="265" text-anchor="end" fill="#e6edf3" font-family="monospace" font-size="11">gpt2-medium</text>
+  
+  <!-- X-axis label -->
+  <text x="425" y="320" text-anchor="middle" fill="#7d8590" font-family="system-ui, sans-serif" font-size="12">Layer Index</text>
+  
+  <!-- X-axis labels (Layers 0-23) -->
+  <text x="115" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">0</text>
+  <text x="140" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">1</text>
+  <text x="165" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">2</text>
+  <text x="190" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">3</text>
+  <text x="215" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">4</text>
+  <text x="240" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">5</text>
+  <text x="265" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">6</text>
+  <text x="290" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">7</text>
+  <text x="315" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">8</text>
+  <text x="340" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">9</text>
+  <text x="365" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">10</text>
+  <text x="390" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">11</text>
+  <text x="415" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">12</text>
+  <text x="440" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">13</text>
+  <text x="465" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">14</text>
+  <text x="490" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">15</text>
+  <text x="515" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">16</text>
+  <text x="540" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">17</text>
+  <text x="565" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">18</text>
+  <text x="590" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">19</text>
+  <text x="615" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">20</text>
+  <text x="640" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">21</text>
+  <text x="665" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">22</text>
+  <text x="690" y="290" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">23</text>
+  
+  <!-- Heatmap cells - pythia-70m (6 layers) -->
+  <rect x="105" y="85" width="23" height="30" fill="#dc2626" rx="2"/>
+  <rect x="130" y="85" width="23" height="30" fill="#ef4444" rx="2"/>
+  <rect x="155" y="85" width="23" height="30" fill="#f97316" rx="2"/>
+  <rect x="180" y="85" width="23" height="30" fill="#fbbf24" rx="2"/>
+  <rect x="205" y="85" width="23" height="30" fill="#84cc16" rx="2"/>
+  <rect x="230" y="85" width="23" height="30" fill="#22c55e" rx="2"/>
+  
+  <!-- Heatmap cells - pythia-160m (12 layers) -->
+  <rect x="105" y="125" width="23" height="30" fill="#dc2626" rx="2"/>
+  <rect x="130" y="125" width="23" height="30" fill="#ef4444" rx="2"/>
+  <rect x="155" y="125" width="23" height="30" fill="#ef4444" rx="2"/>
+  <rect x="180" y="125" width="23" height="30" fill="#f97316" rx="2"/>
+  <rect x="205" y="125" width="23" height="30" fill="#f97316" rx="2"/>
+  <rect x="230" y="125" width="23" height="30" fill="#fbbf24" rx="2"/>
+  <rect x="255" y="125" width="23" height="30" fill="#fbbf24" rx="2"/>
+  <rect x="280" y="125" width="23" height="30" fill="#84cc16" rx="2"/>
+  <rect x="305" y="125" width="23" height="30" fill="#84cc16" rx="2"/>
+  <rect x="330" y="125" width="23" height="30" fill="#22c55e" rx="2"/>
+  <rect x="355" y="125" width="23" height="30" fill="#22c55e" rx="2"/>
+  <rect x="380" y="125" width="23" height="30" fill="#16a34a" rx="2"/>
+  
+  <!-- Heatmap cells - pythia-410m (24 layers) -->
+  <rect x="105" y="165" width="23" height="30" fill="#dc2626" rx="2"/>
+  <rect x="130" y="165" width="23" height="30" fill="#ef4444" rx="2"/>
+  <rect x="155" y="165" width="23" height="30" fill="#ef4444" rx="2"/>
+  <rect x="180" y="165" width="23" height="30" fill="#f97316" rx="2"/>
+  <rect x="205" y="165" width="23" height="30" fill="#f97316" rx="2"/>
+  <rect x="230" y="165" width="23" height="30" fill="#f97316" rx="2"/>
+  <rect x="255" y="165" width="23" height="30" fill="#fbbf24" rx="2"/>
+  <rect x="280" y="165" width="23" height="30" fill="#fbbf24" rx="2"/>
+  <rect x="305" y="165" width="23" height="30" fill="#fbbf24" rx="2"/>
+  <rect x="330" y="165" width="23" height="30" fill="#fbbf24" rx="2"/>
+  <rect x="355" y="165" width="23" height="30" fill="#84cc16" rx="2"/>
+  <rect x="380" y="165" width="23" height="30" fill="#84cc16" rx="2"/>
+  <rect x="405" y="165" width="23" height="30" fill="#84cc16" rx="2"/>
+  <rect x="430" y="165" width="23" height="30" fill="#84cc16" rx="2"/>
+  <rect x="455" y="165" width="23" height="30" fill="#84cc16" rx="2"/>
+  <rect x="480" y="165" width="23" height="30" fill="#22c55e" rx="2"/>
+  <rect x="505" y="165" width="23" height="30" fill="#22c55e" rx="2"/>
+  <rect x="530" y="165" width="23" height="30" fill="#22c55e" rx="2"/>
+  <rect x="555" y="165" width="23" height="30" fill="#22c55e" rx="2"/>
+  <rect x="580" y="165" width="23" height="30" fill="#16a34a" rx="2"/>
+  <rect x="605" y="165" width="23" height="30" fill="#16a34a" rx="2"/>
+  <rect x="630" y="165" width="23" height="30" fill="#16a34a" rx="2"/>
+  <rect x="655" y="165" width="23" height="30" fill="#16a34a" rx="2"/>
+  <rect x="680" y="165" width="23" height="30" fill="#15803d" rx="2"/>
+  
+  <!-- Heatmap cells - gpt2 (12 layers) -->
+  <rect x="105" y="205" width="23" height="30" fill="#dc2626" rx="2"/>
+  <rect x="130" y="205" width="23" height="30" fill="#dc2626" rx="2"/>
+  <rect x="155" y="205" width="23" height="30" fill="#dc2626" rx="2"/>
+  <rect x="180" y="205" width="23" height="30" fill="#ef4444" rx="2"/>
+  <rect x="205" y="205" width="23" height="30" fill="#f97316" rx="2"/>
+  <rect x="230" y="205" width="23" height="30" fill="#f97316" rx="2"/>
+  <rect x="255" y="205" width="23" height="30" fill="#fbbf24" rx="2"/>
+  <rect x="280" y="205" width="23" height="30" fill="#fbbf24" rx="2"/>
+  <rect x="305" y="205" width="23" height="30" fill="#84cc16" rx="2"/>
+  <rect x="330" y="205" width="23" height="30" fill="#84cc16" rx="2"/>
+  <rect x="355" y="205" width="23" height="30" fill="#22c55e" rx="2"/>
+  <rect x="380" y="205" width="23" height="30" fill="#22c55e" rx="2"/>
+  
+  <!-- Heatmap cells - gpt2-medium (24 layers) -->
+  <rect x="105" y="245" width="23" height="30" fill="#dc2626" rx="2"/>
+  <rect x="130" y="245" width="23" height="30" fill="#ef4444" rx="2"/>
+  <rect x="155" y="245" width="23" height="30" fill="#ef4444" rx="2"/>
+  <rect x="180" y="245" width="23" height="30" fill="#f97316" rx="2"/>
+  <rect x="205" y="245" width="23" height="30" fill="#f97316" rx="2"/>
+  <rect x="230" y="245" width="23" height="30" fill="#f97316" rx="2"/>
+  <rect x="255" y="245" width="23" height="30" fill="#fbbf24" rx="2"/>
+  <rect x="280" y="245" width="23" height="30" fill="#fbbf24" rx="2"/>
+  <rect x="305" y="245" width="23" height="30" fill="#fbbf24" rx="2"/>
+  <rect x="330" y="245" width="23" height="30" fill="#fbbf24" rx="2"/>
+  <rect x="355" y="245" width="23" height="30" fill="#84cc16" rx="2"/>
+  <rect x="380" y="245" width="23" height="30" fill="#84cc16" rx="2"/>
+  <rect x="405" y="245" width="23" height="30" fill="#84cc16" rx="2"/>
+  <rect x="430" y="245" width="23" height="30" fill="#84cc16" rx="2"/>
+  <rect x="455" y="245" width="23" height="30" fill="#84cc16" rx="2"/>
+  <rect x="480" y="245" width="23" height="30" fill="#22c55e" rx="2"/>
+  <rect x="505" y="245" width="23" height="30" fill="#22c55e" rx="2"/>
+  <rect x="530" y="245" width="23" height="30" fill="#22c55e" rx="2"/>
+  <rect x="555" y="245" width="23" height="30" fill="#22c55e" rx="2"/>
+  <rect x="580" y="245" width="23" height="30" fill="#16a34a" rx="2"/>
+  <rect x="605" y="245" width="23" height="30" fill="#16a34a" rx="2"/>
+  <rect x="630" y="245" width="23" height="30" fill="#16a34a" rx="2"/>
+  <rect x="655" y="245" width="23" height="30" fill="#16a34a" rx="2"/>
+  <rect x="680" y="245" width="23" height="30" fill="#15803d" rx="2"/>
+  
+  <!-- Legend -->
+  <rect x="105" y="345" width="200" height="15" fill="url(#heatGrad)" rx="2"/>
+  <text x="105" y="375" fill="#7d8590" font-family="system-ui, sans-serif" font-size="10">High Impact (Critical)</text>
+  <text x="305" y="375" text-anchor="end" fill="#7d8590" font-family="system-ui, sans-serif" font-size="10">Low Impact</text>
+  
+  <!-- Key insight callout -->
+  <rect x="500" y="335" width="280" height="50" fill="#161b22" stroke="#30363d" rx="6"/>
+  <text x="515" y="355" fill="#58a6ff" font-family="system-ui, sans-serif" font-size="11" font-weight="600">💡 Key Finding</text>
+  <text x="515" y="372" fill="#e6edf3" font-family="system-ui, sans-serif" font-size="10">Early layers (0-3) consistently most critical</text>
+  <text x="515" y="384" fill="#7d8590" font-family="system-ui, sans-serif" font-size="10">for refusal behavior across all model sizes</text>
+</svg>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 350">
+  <!-- Background -->
+  <rect width="700" height="350" fill="#0d1117"/>
+  
+  <!-- Title -->
+  <text x="350" y="30" text-anchor="middle" fill="#e6edf3" font-family="system-ui, sans-serif" font-size="16" font-weight="600">Refusal Direction Separation Score by Model</text>
+  <text x="350" y="48" text-anchor="middle" fill="#7d8590" font-family="system-ui, sans-serif" font-size="11">Higher σ indicates clearer separation between refusal and compliant activations</text>
+  
+  <!-- Y-axis -->
+  <line x1="100" y1="70" x2="100" y2="280" stroke="#30363d" stroke-width="1"/>
+  <text x="40" y="180" text-anchor="middle" fill="#7d8590" font-family="system-ui, sans-serif" font-size="11" transform="rotate(-90 40 180)">Separation Score (σ)</text>
+  
+  <!-- Y-axis ticks and labels -->
+  <line x1="95" y1="280" x2="100" y2="280" stroke="#30363d"/>
+  <text x="90" y="284" text-anchor="end" fill="#7d8590" font-family="monospace" font-size="10">0.0</text>
+  
+  <line x1="95" y1="238" x2="650" y2="238" stroke="#21262d" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="90" y="242" text-anchor="end" fill="#7d8590" font-family="monospace" font-size="10">0.5</text>
+  
+  <line x1="95" y1="196" x2="650" y2="196" stroke="#21262d" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="90" y="200" text-anchor="end" fill="#7d8590" font-family="monospace" font-size="10">1.0</text>
+  
+  <line x1="95" y1="154" x2="650" y2="154" stroke="#21262d" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="90" y="158" text-anchor="end" fill="#7d8590" font-family="monospace" font-size="10">1.5</text>
+  
+  <line x1="95" y1="112" x2="650" y2="112" stroke="#21262d" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="90" y="116" text-anchor="end" fill="#7d8590" font-family="monospace" font-size="10">2.0</text>
+  
+  <line x1="95" y1="70" x2="650" y2="70" stroke="#21262d" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="90" y="74" text-anchor="end" fill="#7d8590" font-family="monospace" font-size="10">2.5</text>
+  
+  <!-- X-axis -->
+  <line x1="100" y1="280" x2="650" y2="280" stroke="#30363d" stroke-width="1"/>
+  
+  <!-- Bars -->
+  <!-- pythia-70m: 0.457σ -->
+  <rect x="130" y="241" width="70" height="39" fill="#6366f1" rx="4"/>
+  <text x="165" y="235" text-anchor="middle" fill="#a5b4fc" font-family="monospace" font-size="11" font-weight="600">0.46σ</text>
+  <text x="165" y="300" text-anchor="middle" fill="#e6edf3" font-family="monospace" font-size="10">pythia-70m</text>
+  <text x="165" y="312" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">(70M)</text>
+  
+  <!-- pythia-160m: 0.548σ -->
+  <rect x="220" y="234" width="70" height="46" fill="#6366f1" rx="4"/>
+  <text x="255" y="228" text-anchor="middle" fill="#a5b4fc" font-family="monospace" font-size="11" font-weight="600">0.55σ</text>
+  <text x="255" y="300" text-anchor="middle" fill="#e6edf3" font-family="monospace" font-size="10">pythia-160m</text>
+  <text x="255" y="312" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">(160M)</text>
+  
+  <!-- pythia-410m: 1.635σ -->
+  <rect x="310" y="143" width="70" height="137" fill="#22c55e" rx="4"/>
+  <text x="345" y="137" text-anchor="middle" fill="#86efac" font-family="monospace" font-size="11" font-weight="600">1.64σ</text>
+  <text x="345" y="300" text-anchor="middle" fill="#e6edf3" font-family="monospace" font-size="10">pythia-410m</text>
+  <text x="345" y="312" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">(410M)</text>
+  
+  <!-- gpt2: 1.486σ -->
+  <rect x="400" y="156" width="70" height="124" fill="#22c55e" rx="4"/>
+  <text x="435" y="150" text-anchor="middle" fill="#86efac" font-family="monospace" font-size="11" font-weight="600">1.49σ</text>
+  <text x="435" y="300" text-anchor="middle" fill="#e6edf3" font-family="monospace" font-size="10">gpt2</text>
+  <text x="435" y="312" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">(124M)</text>
+  
+  <!-- gpt2-medium: 0.545σ -->
+  <rect x="490" y="234" width="70" height="46" fill="#6366f1" rx="4"/>
+  <text x="525" y="228" text-anchor="middle" fill="#a5b4fc" font-family="monospace" font-size="11" font-weight="600">0.55σ</text>
+  <text x="525" y="300" text-anchor="middle" fill="#e6edf3" font-family="monospace" font-size="10">gpt2-medium</text>
+  <text x="525" y="312" text-anchor="middle" fill="#7d8590" font-family="monospace" font-size="9">(355M)</text>
+  
+  <!-- Legend -->
+  <rect x="580" y="85" width="12" height="12" fill="#22c55e" rx="2"/>
+  <text x="597" y="95" fill="#e6edf3" font-family="system-ui, sans-serif" font-size="10">σ > 1.0 (Good)</text>
+  <rect x="580" y="105" width="12" height="12" fill="#6366f1" rx="2"/>
+  <text x="597" y="115" fill="#e6edf3" font-family="system-ui, sans-serif" font-size="10">σ < 1.0 (Weak)</text>
+  
+  <!-- Threshold line -->
+  <line x1="100" y1="196" x2="650" y2="196" stroke="#f59e0b" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="655" y="200" fill="#fbbf24" font-family="system-ui, sans-serif" font-size="9">Target: 1.0σ</text>
+</svg>
